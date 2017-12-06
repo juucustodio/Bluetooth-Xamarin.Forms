@@ -5,9 +5,23 @@
              x:Class="DemoBluetooth.MainPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Search" Clicked="searchDevice"/>
+            <ListView x:Name="DevicesList"
+                      IsPullToRefreshEnabled="true"
+                      CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding NativeDevice.Name}" ></Label>
+                                <Label Text="{Binding NativeDevice.Address}" ></Label>
+                                <Label Text="{Binding NativeDevice.BondState}" ></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
