@@ -1,10 +1,6 @@
-﻿using System;
-
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
 namespace DemoBluetooth.Droid
@@ -21,7 +17,13 @@ namespace DemoBluetooth.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
-        }
+
+			this.RequestPermissions(new[]
+			{
+				Manifest.Permission.AccessCoarseLocation,
+				Manifest.Permission.BluetoothPrivileged
+			}, 0);
+		}
     }
 }
 
